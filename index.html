@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CodeSmart Chatbot</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    #chat { background: white; padding: 10px; max-width: 500px; margin: auto; border-radius: 5px; height: 400px; overflow-y: auto; }
+    .user, .bot { margin: 5px 0; padding: 8px; border-radius: 5px; }
+    .user { background: #cce5ff; text-align: right; }
+    .bot { background: #e2e3e5; text-align: left; }
+    input { width: 100%; padding: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div id="chat"></div>
+  <input type="text" id="input" placeholder="Ask about an ICD condition...">
+  <script>
+    const db = {
+      "pneumonia": {
+        code: "J18.9",
+        description: "Pneumonia, unspecified organism",
+        rule: "Use J13–J17 if organism is known"
+      },
+      "hiv": {
+        code: "B20",
+        description: "HIV disease resulting in infections",
+        rule: "Use B20–B24 based on manifestation. Do not mix with R-codes."
+      }
+    };
+
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("input");
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = sender;
+      msg.textContent = text;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    input.addEventListener("keypress", function(e) {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        const question = input.value.toLowerCase().trim();
+        addMessage(input.value, "user");
+        input.value = "";
+
+        const answer = db[question];
+        if (answer) {
+          addMessage(`ICD Code: ${answer.code}
+Description: ${answer.description}
+Rule: ${answer.rule}`, "bot");
+        } else {
+          addMessage("Sorry, I couldn't find that. Please contact the Coding Support Team.", "bot");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
