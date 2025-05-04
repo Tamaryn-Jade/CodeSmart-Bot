@@ -1,0 +1,4 @@
+Code,Description,Coding Rule,PMB Status
+J18.9,Pneumonia,organism unspecified,Yes
+B20,HIV disease,Use B20-B24 based on complication,Yes
+B20.0,HIV w/ Mycobacterial infection,Code first B20.0 then A15-A19,Yes

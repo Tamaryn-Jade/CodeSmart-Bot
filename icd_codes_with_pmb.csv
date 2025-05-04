@@ -1,0 +1,6 @@
+ICD Code,Description,Coding Rule,PMB Status
+B20,HIV disease resulting in infectious and parasitic diseases,Use B20-B24 for HIV-related conditions,Yes
+B20.0,HIV disease resulting in mycobacterial infection,"Code first B20.0, followed by A15-A19 to indicate type of TB",Yes
+A15,"Respiratory tuberculosis, bacteriologically and histologically confirmed","If TB is HIV-related, sequence B20.0 first",Yes
+J18.9,"Pneumonia, organism unspecified",Use J13-J17 if organism is known,Yes
+Z21,Asymptomatic HIV infection status,Use when patient has HIV but no symptoms and TB is not HIV-related,Yes
