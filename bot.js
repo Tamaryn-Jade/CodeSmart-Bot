@@ -7,7 +7,8 @@ async function sendMessage() {
     chatBox.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
     input.value = '';
 
-    const response = await fetch('icd_data.csv');
+    // Update the fetch URL to use GitHub Pages
+    const response = await fetch('https://tamary-jade.github.io/CodeSmart-Bot/icd_data.csv');
     const text = await response.text();
     const lines = text.split('\n');
     let found = false;
